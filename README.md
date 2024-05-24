@@ -8,7 +8,7 @@
 
 ###  Control Flow Graph
 
-![Control flow graph](./control-flow-graph.png)
+![Control flow graph](./img/control-flow-graph.png)
 
 Графикот е направен со [draw.io](https://www.drawio.com/)
 
