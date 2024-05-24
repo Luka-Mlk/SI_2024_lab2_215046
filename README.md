@@ -32,7 +32,7 @@
 
 Се заклучува дека *CC = **12***
 
-### Тест случаи според критериумот [Every statement](./src/test/SILab2Test.java)
+### Тест случаи според критериумот [Every branch](./src/test/java/SILab2Test.java)
 
 1. testAllItemsNull()
 ```
@@ -168,3 +168,83 @@ public void testItemWithPriceOver300AndNoDiscount() {
 }
 ```
 Овој тест проверува случај кога ставката има цена поголема од 300, попуст е 0 и баркод кој почнува со '0'.
+
+### Тест случаи според критериумот [Multiple condition](./src/test/java/SILab2Test.java)
+
+2. testPrice300DiscountPositiveBarcodeStartsWithZero()
+```
+// Branch: Price is exactly 300, discount positive, barcode starts with '0'
+@Test
+public void testPrice300DiscountPositiveBarcodeStartsWithZero() {
+    Item[] allItems = {new Item("item1", "012345", 300, 0.1)};
+    assertTrue(SILab2.checkCart(Arrays.asList(allItems), 27));
+}
+```
+Овој тест проверува случај кога цената е точно 300, попустот е позитивен, а баркодот започнува со '0'.
+
+3. testPriceOver300DiscountZeroBarcodeStartsWithZero()
+```
+// Branch: Price over 300, discount zero, barcode starts with '0'
+@Test
+public void testPriceOver300DiscountZeroBarcodeStartsWithZero() {
+    Item[] allItems = {new Item("item1", "012345", 350, 0)};
+    assertFalse(SILab2.checkCart(Arrays.asList(allItems), 350));
+}
+```
+Овој тест проверува случај кога цената е поголема од 300, попустот е точно 0, а баркодот започнува со '0'.
+
+4. testPriceOver300DiscountPositiveBarcodeNotStartsWithZero()
+```
+// Branch: Price over 300, discount positive, barcode does not start with '0'
+@Test
+public void testPriceOver300DiscountPositiveBarcodeNotStartsWithZero() {
+    Item[] allItems = {new Item("item1", "12345", 350, 0.1)};
+    assertFalse(SILab2.checkCart(Arrays.asList(allItems), 35));
+}
+```
+Овој тест проверува случај кога цената е поголема од 300, попустот е позитивен, а баркодот не започнува со '0'.
+
+5. testPrice300DiscountNegativeBarcodeStartsWithZero()
+```
+// Branch: Price is exactly 300, discount negative, barcode starts with '0'
+@Test
+public void testPrice300DiscountNegativeBarcodeStartsWithZero() {
+    Item[] allItems = {new Item("item1", "012345", 300, -0.1)};
+    assertFalse(SILab2.checkCart(Arrays.asList(allItems), 300));
+}
+```
+Овој тест проверува случај кога цената е точно 300, попустот е негативен, а баркодот започнува со '0'.
+
+6. testPriceOver300DiscountZeroBarcodeNotStartsWithZero()
+```
+// Branch: Price over 300, discount zero, barcode does not start with '0'
+@Test
+public void testPriceOver300DiscountZeroBarcodeNotStartsWithZero() {
+    Item[] allItems = {new Item("item1", "12345", 350, 0)};
+    assertFalse(SILab2.checkCart(Arrays.asList(allItems), 350));
+}
+```
+Овој тест проверува случај кога цената е поголема од 300, попустот е точно 0, а баркодот не започнува со '0'.
+
+7. testPrice300DiscountNegativeBarcodeStartsWithZero()
+```
+// Branch: Price is exactly 300, discount negative, barcode starts with '0'
+@Test
+public void testPrice300DiscountNegativeBarcodeStartsWithZero() {
+    Item[] allItems = {new Item("item1", "012345", 300, -0.1)};
+    assertFalse(SILab2.checkCart(Arrays.asList(allItems), 300));
+}
+```
+Овој тест проверува случај кога цената е точно 300, попустот е негативен, а баркодот започнува со '0'.
+
+8. testPrice300DiscountZeroBarcodeNotStartsWithZero()
+```
+// Branch: Price is exactly 300, discount zero, barcode does not start with '0'
+@Test
+public void testPrice300DiscountZeroBarcodeNotStartsWithZero() {
+    Item[] allItems = {new Item("item1", "12345", 300, 0)};
+    assertTrue(SILab2.checkCart(Arrays.asList(allItems), 300));
+}
+```
+Овој тест проверува случај кога цената е точно 300, попустот е точно 0, а баркодот не започнува со '0'.
+
